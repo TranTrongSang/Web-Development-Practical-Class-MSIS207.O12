@@ -1,28 +1,33 @@
-const keySoundMap = {
-  'w': 'kick.mp3',
-  'a': 'snare.mp3',
-  's': 'hihat.mp3',
-  'd': 'tom1.mp3',
-  'j': 'tom2.mp3',
-  'k': 'tom3.mp3',
-  'l': 'crash.mp3',
-};
 
-function playSound(key) {
-  const audio = new Audio(getSoundFile(key));
-  audio.play();
-}
+  window.addEventListener('keydown', playSoundOnKeyPress);
+  document.getElementById('drum-kit').addEventListener('click', playSoundOnClick);
 
-function getSoundFile(key) {
-  return keySoundMap[key] || '';
-}
-
-function preloadAudio() {
-  const preloader = document.getElementById('preloader');
-  for (const key in keySoundMap) {
-      const audio = new Audio(getSoundFile(key));
-      preloader.appendChild(audio);
+  function playSoundOnKeyPress(event) {
+    const keyCode = event.keyCode;
+    playSound(keyCode);
   }
-}
 
-window.onload = preloadAudio;
+  function playSoundOnClick(event) {
+    const target = event.target;
+    if (target.classList.contains('key')) {
+      const keyCode = target.getAttribute('data-key');
+      playSound(keyCode);
+    }
+  }
+
+  function playSound(keyCode) {
+    const audio = document.querySelector(`audio[data-key="${keyCode}"]`);
+    const key = document.querySelector(`.key[data-key="${keyCode}"]`);
+
+    if (audio) {
+      audio.currentTime = 0; // rewind to the start
+      audio.play();
+    }
+
+    if (key) {
+      key.classList.add('playing');
+      setTimeout(() => {
+        key.classList.remove('playing');
+      }, 100);
+    }
+  }
