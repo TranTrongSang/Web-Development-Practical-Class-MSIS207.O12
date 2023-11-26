@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Current Day and Time</title>
+  <script>
+    function getCurrentDayAndTime() 
+    {
+      const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+
+      const currentDate = new Date();
+      const currentDay = daysOfWeek[currentDate.getDay()]; // Get day from array
+      let currentHour = currentDate.getHours();
+      const period = currentHour >= 12 ? "PM" : "AM";
+
+    //   if (currentHour > 12) 
+    //     currentHour -= 12;
+    //   else if (currentHour === 0) 
+    //     currentHour = 12;
+      
+
+
+      const minutes = currentDate.getMinutes();
+      const seconds = currentDate.getSeconds();
+
+      const resultContainer = document.getElementById("result");
+      resultContainer.innerHTML = `
+        <p>Today is: <b>${currentDay}</b> </p>
+        <p>Current time is: ${currentHour} : ${minutes} : ${seconds}  ${period} </p>
+      `;
+    }
+
+    window.onload = getCurrentDayAndTime;
+  </script>
+</head>
+<body>
+  <div id="result"></div>
+</body>
+</html>

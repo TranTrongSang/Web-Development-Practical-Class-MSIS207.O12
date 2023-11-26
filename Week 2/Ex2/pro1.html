@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Change Button Text</title>
+</head>
+<body>
+    <!-- Create a submit button with an id for easy reference -->
+    <button id="submitButton" onclick="changeButtonText()">Submit</button>
+
+    <script>
+        function changeButtonText() {
+            // Get the button element by its id
+            const submitButton = document.getElementById("submitButton");
+
+            // Change the text of the button
+            submitButton.textContent = "Hello World!!! Text Changed!";
+        }
+    </script>
+</body>
+</html>

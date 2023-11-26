@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Highlighter</title>
+    <style>
+        .highlight {
+            font-weight: bold;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <p id="textToHighlight">
+        This is an example text with some <span class="highlight">bold words</span>.
+        You can hover over the link below to highlight the bold words.
+    </p>
+
+    <!-- Link to trigger highlighting -->
+    <a href="#" id="highlightLink">HOVER through this link</a>
+
+    <script>
+        // Function to highlight bold words
+        function highlightBoldWords() {
+            // Get the text element by its id
+            const textElement = document.getElementById("textToHighlight");
+
+            // Find all bold elements within the text
+            const boldElements = textElement.querySelectorAll(".highlight");
+
+            // Add a class to highlight the bold words
+            boldElements.forEach(element => {
+                element.classList.add("highlight");
+            });
+        }
+
+        // Event listener for link hover
+        document.getElementById("highlightLink").addEventListener("mouseover", highlightBoldWords);
+    </script>
+</body>
+</html>
+ 
