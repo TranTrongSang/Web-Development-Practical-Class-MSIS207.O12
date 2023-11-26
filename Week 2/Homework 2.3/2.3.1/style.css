@@ -1,0 +1,16 @@
+
+body {
+  font-family: 'Roboto', sans-serif;
+  text-align: center;
+  margin: 50px;
+}
+
+h2 {
+  font-family: 'Lobster', cursive;
+  font-size: 36px;
+}
+
+#countdown {
+  font-size: 24px;
+  margin-top: 20px;
+}
